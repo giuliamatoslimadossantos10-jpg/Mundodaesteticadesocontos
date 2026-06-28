@@ -1,55 +1,105 @@
+<!--
+    ============================================================
+    DOCUMENTO HTML5 — Portal de Descontos & Benefícios
+    ============================================================
+    Este arquivo é uma landing page (página de aterrissagem) única
+    que reúne: roleta de prêmios, simulador de economia, catálogo
+    de cursos e cupons de parceiros. Tudo em um único HTML.
+    Tecnologias: HTML5, Tailwind CSS (via CDN), JavaScript vanilla.
+    ============================================================
+-->
+
+<!-- DOCTYPE informa ao navegador que este é um documento HTML5 moderno -->
 <!DOCTYPE html>
+<!-- lang="pt-BR" define o idioma da página como Português do Brasil -->
 <html lang="pt-BR">
 <head>
+    <!-- charset UTF-8 permite acentos e caracteres especiais -->
     <meta charset="UTF-8">
+    <!-- viewport torna a página responsiva em dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título exibido na aba do navegador e em resultados de busca (SEO) -->
     <title>Mundo da Estética — Portal de Descontos & Benefícios</title>
-    <!-- Tailwind CSS -->
+
+    <!--
+        Tailwind CSS via CDN:
+        Em vez de instalar via npm, usamos o CDN para prototipagem rápida.
+        O script carrega o framework e injeta as classes utilitárias.
+    -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
+
+    <!--
+        Google Fonts — fonte "Inter":
+        preconnect otimiza a conexão com os servidores do Google,
+        reduzindo o tempo de carregamento da fonte.
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Premium Icons -->
+
+    <!--
+        FontAwesome 6.4.0 — biblioteca de ícones vetoriais:
+        Usada para todos os ícones do site (troféu, presentes, setas, etc.).
+    -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!--
+        Configuração customizada do Tailwind:
+        Aqui estendemos o tema padrão com uma paleta de cores "aesthetic"
+        (tons terrosos/dourados) e definimos a fonte padrão como Inter.
+        Isso permite usar classes como bg-aesthetic-500 ou text-aesthetic-gold.
+    -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         aesthetic: {
-                            50: '#FDF8F5',
-                            100: '#FBEFEA',
-                            200: '#F7DEC3',
-                            300: '#E9C49A',
-                            400: '#D49B6A',
-                            500: '#C17B4B',
-                            600: '#A75D35',
-                            700: '#8A4526',
-                            gold: '#C5A880',
-                            goldDark: '#A38558',
-                            dark: '#1C1917',
+                            50: '#FDF8F5',   /* Quase branco — fundos suaves */
+                            100: '#FBEFEA',   /* Bege claro */
+                            200: '#F7DEC3',   /* Bege */
+                            300: '#E9C49A',   /* Areia */
+                            400: '#D49B6A',   /* Caramelo */
+                            500: '#C17B4B',   /* Terracota */
+                            600: '#A75D35',   /* Marrom claro */
+                            700: '#8A4526',   /* Marrom escuro */
+                            gold: '#C5A880',  /* Dourado principal */
+                            goldDark: '#A38558', /* Dourado escuro */
+                            dark: '#1C1917',  /* Quase preto */
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'], /* Sobrescreve a fonte sans do Tailwind */
                     }
                 }
             }
         }
     </script>
+
+    <!--
+        CSS customizado (estilos que não são cobertos pelo Tailwind):
+        - Define a fonte e cor de fundo do body
+        - Cria gradientes dourados reutilizáveis
+        - Configura a animação da roda da sorte
+    -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #FDF8F5;
         }
+        /* Gradiente dourado usado em botões e logos */
         .gold-gradient {
             background: linear-gradient(135deg, #DFBA8C 0%, #C5A880 50%, #A8895F 100%);
         }
+        /* Gradiente escuro usado em botões de destaque */
         .dark-gold-gradient {
             background: linear-gradient(135deg, #1C1917 0%, #2A2521 100%);
         }
-        /* Roda da Fortuna */
+        /*
+            Roda da Fortuna — estilos de animação:
+            perspective dá profundidade 3D ao container,
+            transition define uma rotação suave de 4 segundos com curva de easing.
+        */
         #wheel-container {
             perspective: 1000px;
         }
@@ -59,12 +109,26 @@
         }
     </style>
 </head>
+<!--
+    BODY — corpo da página:
+    - text-stone-800: cor de texto padrão (cinza escuro)
+    - antialiased: suaviza as bordas das fontes para melhor legibilidade
+    - selection:bg-aesthetic-200: cor de destaque ao selecionar texto
+-->
 <body class="text-stone-800 antialiased selection:bg-aesthetic-200 selection:text-stone-950">
 
-    <!-- Nav Bar -->
+    <!--
+        ========================================================
+        BARRA DE NAVEGAÇÃO (NAVBAR)
+        ========================================================
+        - sticky: fixa no topo ao rolar a página
+        - backdrop-blur-md: efeito de vidro fosco (glassmorphism)
+        - Contém logo, links de navegação e botão de chamada para ação (CTA)
+    -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
+                <!-- Logo: ícone circular com gradiente dourado + textos da marca -->
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-white shadow-md">
                         <i class="fa-solid fa-wand-magic-sparkles text-lg animate-pulse"></i>
@@ -74,12 +138,18 @@
                         <span class="text-xs font-semibold uppercase tracking-widest text-aesthetic-gold">Clube de Benefícios</span>
                     </div>
                 </div>
+                <!--
+                    Links de navegação (menu horizontal):
+                    - hidden md:flex: oculto em telas pequenas, visível em tablets/desktops
+                    - Cada link usa anchor (#id) para navegação interna (scroll suave)
+                -->
                 <div class="hidden md:flex items-center gap-8">
                     <a href="#roleta" class="text-stone-600 hover:text-aesthetic-700 font-medium transition-colors">Roda da Sorte</a>
                     <a href="#calculadora" class="text-stone-600 hover:text-aesthetic-700 font-medium transition-colors">Simulador Infinity</a>
                     <a href="#cursos" class="text-stone-600 hover:text-aesthetic-700 font-medium transition-colors">Cursos Oficiais</a>
                     <a href="#parceiros" class="text-stone-600 hover:text-aesthetic-700 font-medium transition-colors">Cupons Parceiros</a>
                 </div>
+                <!-- Botão CTA (Call To Action): convida o usuário a girar a roleta -->
                 <div>
                     <a href="#roleta" class="gold-gradient text-stone-950 font-bold px-5 py-2.5 rounded-full hover:shadow-lg transition-all text-sm flex items-center gap-2 border border-amber-200/20">
                         <i class="fa-solid fa-gift"></i> Girar Roleta
@@ -89,25 +159,57 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!--
+        ========================================================
+        SEÇÃO HERO (CABEÇALHO DE DESTAQUE)
+        ========================================================
+        A primeira seção visível ao carregar a página. Apresenta:
+        - Badge de credibilidade (descontos verificados)
+        - Título principal com chamada impactante
+        - Botões de ação (girar roleta / ver cursos)
+        - Estatísticas resumidas (economia, preço, garantia)
+        - Card promocional da Assinatura Infinity
+        O fundo usa gradientes suaves e blobs animados para dar vida.
+    -->
     <header class="relative overflow-hidden bg-gradient-to-b from-aesthetic-100 via-aesthetic-50 to-white py-16 sm:py-24">
+        <!--
+            Blobs decorativos de fundo:
+            Círculos desfocados (blur-3xl) com animações suaves
+            para criar um efeito visual moderno e aconchegante.
+            z-0 garante que fiquem atrás do conteúdo (z-10).
+        -->
         <div class="absolute inset-0 z-0 opacity-40">
             <div class="absolute top-12 left-12 w-64 h-64 rounded-full bg-aesthetic-200 filter blur-3xl animate-bounce" style="animation-duration: 10s;"></div>
             <div class="absolute bottom-12 right-12 w-80 h-80 rounded-full bg-aesthetic-300 filter blur-3xl animate-pulse" style="animation-duration: 8s;"></div>
         </div>
 
+        <!--
+            Container principal do Hero:
+            max-w-7xl: largura máxima de 1280px
+            grid de 12 colunas: 7 para texto (esquerda) e 5 para o card (direita)
+        -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Coluna esquerda: textos, botões e estatísticas -->
                 <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <!-- Badge: pequeno selo que gera credibilidade -->
                     <div class="inline-flex items-center gap-2 bg-amber-100/60 border border-amber-200 text-amber-950 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
                         <i class="fa-solid fa-tags text-amber-700"></i> Descontos Exclusivos Verificados de 2026
                     </div>
+                    <!-- Título principal: usa gradiente dourado na palavra-chave -->
                     <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-stone-900 tracking-tight leading-none">
                         Sua carreira na Estética pelo <span class="text-transparent bg-clip-text gold-gradient">menor preço.</span>
                     </h1>
+                    <!-- Parágrafo descritivo: explica a proposta de valor -->
                     <p class="text-lg text-stone-600 max-w-2xl mx-auto lg:mx-0">
                         Inscreva-se nos melhores cursos do <strong>Mundo Estética</strong> com descontos imperdíveis ou garanta cupons especiais para comprar os melhores cosméticos profissionais.
                     </p>
+                    <!--
+                        Botões de ação (CTA duplo):
+                        - Primário (escuro): girar a roda da sorte
+                        - Secundário (borda): ver cursos promocionais
+                        flex-col em mobile, flex-row em desktop
+                    -->
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                         <a href="#roleta" class="dark-gold-gradient text-white font-semibold px-8 py-4 rounded-xl hover:shadow-xl transition-all flex items-center justify-center gap-3 group text-center">
                             <i class="fa-solid fa-circle-play text-aesthetic-gold group-hover:scale-110 transition-transform"></i>
@@ -118,7 +220,11 @@
                         </a>
                     </div>
                     
-                    <!-- Stats / Mini Banner -->
+                    <!--
+                        Mini-banner de estatísticas:
+                        3 colunas com números de impacto para converter visitantes.
+                        border-x cria divisórias verticais entre os itens.
+                    -->
                     <div class="grid grid-cols-3 gap-4 pt-4 border-t border-stone-200 max-w-md mx-auto lg:mx-0">
                         <div>
                             <span class="block text-3xl font-extrabold text-stone-900">Até 60%</span>
@@ -135,7 +241,11 @@
                     </div>
                 </div>
                 
-                <!-- Main Promo Banner Graphics -->
+                <!--
+                    Coluna direita: Card promocional da Assinatura Infinity
+                    Um "cartão de oferta" com preço, descrição e botão de compra.
+                    Inclui badge animado "Super Oferta!" no canto superior.
+                -->
                 <div class="lg:col-span-5 relative">
                     <div class="relative bg-white p-8 rounded-3xl shadow-xl border border-stone-100 max-w-sm mx-auto">
                         <div class="absolute -top-4 -right-4 bg-red-500 text-white font-bold text-xs uppercase px-3 py-1.5 rounded-full shadow-md animate-bounce">
@@ -168,31 +278,60 @@
         </div>
     </header>
 
-    <!-- Section: Lucky Wheel (Roleta de Prêmios) -->
+    <!--
+        ========================================================
+        SEÇÃO: RODA DA SORTE (ROLETA DE PRÊMIOS)
+        ========================================================
+        Seção interativa com fundo escuro (stone-900) onde o usuário
+        pode girar uma roleta SVG para ganhar um cupom de desconto.
+        A roleta é desenhada com SVG (5 setores) e animada via CSS/JS.
+        Círculos decorativos de fundo criam profundidade visual.
+    -->
     <section id="roleta" class="py-20 bg-stone-900 text-white overflow-hidden relative">
+        <!-- Círculos decorativos concêntricos no fundo (estilo mira) -->
         <div class="absolute inset-0 opacity-10 pointer-events-none">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white rounded-full"></div>
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-dashed border-white rounded-full"></div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Cabeçalho da seção: subtítulo, título e descrição -->
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <span class="text-xs font-extrabold uppercase tracking-widest text-aesthetic-gold">Teste sua Sorte</span>
                 <h2 class="text-3xl sm:text-4xl font-bold mt-2">Roda da Sorte: Cupons Exclusivos!</h2>
                 <p class="text-stone-400 mt-3">Gire a roleta e ganhe um cupom de desconto real garantido para sua próxima formação ou compra no Mundo da Estética.</p>
             </div>
 
+            <!--
+                Grid de 12 colunas: 6 para a roleta (esquerda) e 6 para o resultado (direita)
+            -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Interactive Canvas/SVG Wheel -->
+                <!--
+                    Coluna esquerda: A roleta interativa
+                    Construída com SVG vetorial para nítidez em qualquer resolução.
+                -->
                 <div class="lg:col-span-6 flex flex-col items-center justify-center">
+                    <!--
+                        Container da roleta com perspectiva 3D:
+                        Responsivo: 320px em mobile, 400px em telas maiores.
+                    -->
                     <div id="wheel-container" class="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px]">
-                        <!-- Arrow indicator -->
+                        <!--
+                            Indicador (seta) no topo da roleta:
+                            Mostra qual prêmio foi sorteado quando a roleta para.
+                        -->
                         <div class="absolute -top-2 left-1/2 -translate-x-1/2 z-30 drop-shadow-lg">
                             <i class="fa-solid fa-caret-down text-amber-500 text-5xl"></i>
                         </div>
                         
-                        <!-- The Wheel -->
+                        <!--
+                            A roleta em SVG:
+                            - viewBox 0 0 100 100: sistema de coordenadas 100x100
+                            - 5 setores (paths) coloridos alternadamente
+                            - Cada path usa arcos circulares (comando A do SVG)
+                            - O texto de cada setor é rotacionado para ficar legível
+                        -->
                         <svg id="wheel" class="w-full h-full shadow-2xl rounded-full border-4 border-amber-500/50" viewBox="0 0 100 100">
                             <!-- Outer Ring -->
                             <circle cx="50" cy="50" r="48" fill="#2d2521" stroke="#C5A880" stroke-width="2"/>
@@ -208,7 +347,11 @@
                             <!-- Segment 5: 20% OFF Geral -->
                             <path d="M50,50 L8.5,26 A48,48 0 0,1 50,2 Z" fill="#C5A880" />
 
-                            <!-- Segment Texts -->
+                            <!--
+                                Textos dos setores:
+                                Cada <text> é rotacionado para acompanhar o ângulo do setor.
+                                O rotate(180) final inverte o texto para ficar de cabeça para cima.
+                            -->
                             <g transform="translate(50,50)" fill="#ffffff" font-size="3.5" font-weight="bold" text-anchor="middle">
                                 <text transform="rotate(36, 0, 0) translate(0, -32) rotate(180)" fill="#C5A880">15% INFINITY</text>
                                 <text transform="rotate(108, 0, 0) translate(0, -32) rotate(180)" fill="#1C1917">E-BOOK GRÁTIS</text>
@@ -217,19 +360,27 @@
                                 <text transform="rotate(324, 0, 0) translate(0, -32) rotate(180)" fill="#1C1917">20% PREMIUM</text>
                             </g>
 
-                            <!-- Center Pin -->
+                            <!-- Pino central da roleta (decorativo) -->
                             <circle cx="50" cy="50" r="10" fill="#1C1917" stroke="#C5A880" stroke-width="2" />
                             <circle cx="50" cy="50" r="5" fill="#C5A880" />
                         </svg>
                     </div>
                     
+                    <!--
+                        Botão "GIRAR": chama a função spinWheel() ao ser clicado.
+                        O estado muda após o giro (desativado + texto alterado via JS).
+                    -->
                     <button id="spin-button" onclick="spinWheel()" class="mt-8 px-10 py-4 dark-gold-gradient hover:brightness-110 text-white font-extrabold text-lg rounded-full shadow-lg hover:shadow-amber-500/20 transition-all border border-amber-300 flex items-center gap-3">
                         <i class="fa-solid fa-spinner animate-spin-slow"></i> GIRAR ROLETAR
                     </button>
                     <p class="text-xs text-stone-400 mt-3">Limite de 1 giro gratuito por visitante diário.</p>
                 </div>
 
-                <!-- Reward display area -->
+                <!--
+                    Coluna direita: Área de exibição do prêmio
+                    Inicialmente mostra um placeholder. Após girar,
+                    o JavaScript substitui o conteúdo pelo prêmio sorteado.
+                -->
                 <div class="lg:col-span-6 flex flex-col justify-center">
                     <div id="reward-box" class="bg-stone-800/80 border border-stone-700/80 p-8 rounded-3xl text-center lg:text-left transition-all max-w-md mx-auto lg:mx-0">
                         <div class="inline-flex w-14 h-14 items-center justify-center rounded-2xl bg-stone-700 text-aesthetic-gold text-2xl mb-6">
@@ -253,7 +404,15 @@
         </div>
     </section>
 
-    <!-- Section: Smart Savings Calculator -->
+    <!--
+        ========================================================
+        SEÇÃO: SIMULADOR DE ECONOMIA INFINITY
+        ========================================================
+        Ferramenta interativa que permite ao usuário selecionar
+        cursos individuais e comparar o preço total com a assinatura
+        Infinity (R$ 1.044). O cálculo é feito em tempo real via JS.
+        Grid de 12 colunas: 7 para a lista de cursos, 5 para o relatório.
+    -->
     <section id="calculadora" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
@@ -263,12 +422,23 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <!-- Course selector list -->
-                <div class="lg:col-span-7 bg-aesthetic-50 p-6 sm:p-8 rounded-3xl border border-aesthetic-100">
+            <!--
+                Coluna esquerda: Lista de cursos selecionáveis
+                Cada curso é um <label> com checkbox, título, descrição e preço.
+                O atributo data-price armazena o preço para o cálculo em JS.
+                onchange="calculateSavings()" recalcula a cada clique.
+            -->
+            <div class="lg:col-span-7 bg-aesthetic-50 p-6 sm:p-8 rounded-3xl border border-aesthetic-100">
                     <h3 class="text-lg font-bold text-stone-900 mb-6 flex items-center gap-2">
                         <i class="fa-solid fa-check-double text-aesthetic-600"></i> Escolha seus Cursos de Interesse:
                     </h3>
                     
+                    <!--
+                        Lista de cursos com checkboxes:
+                        - checked: itens 1 e 2 vêm marcados por padrão
+                        - data-price: preço usado no cálculo dinâmico
+                        - class course-calc-checkbox: seletor usado pelo JS
+                    -->
                     <div class="space-y-4">
                         <!-- Course Item 1 -->
                         <label class="flex items-center justify-between p-4 bg-white hover:bg-stone-50 rounded-xl border border-stone-200 cursor-pointer transition-all">
@@ -328,7 +498,13 @@
                     </div>
                 </div>
 
-                <!-- Savings comparison graphic -->
+                <!--
+                    Coluna direita: Relatório de economia (card escuro)
+                    Mostra o total de cursos avulsos vs. preço da assinatura
+                    e calcula a diferença (economia) dinamicamente via JS.
+                    Os IDs (calc-total-single, calc-savings-result) são
+                    atualizados pela função calculateSavings().
+                -->
                 <div class="lg:col-span-5 bg-stone-900 text-white p-8 rounded-3xl flex flex-col justify-between shadow-xl">
                     <div>
                         <h3 class="text-xl font-bold mb-6 text-aesthetic-gold"><i class="fa-solid fa-chart-line"></i> Relatório de Economia</h3>
@@ -359,9 +535,22 @@
         </div>
     </section>
 
-    <!-- Section: Catalog of Promoted Courses -->
+    <!--
+        ========================================================
+        SEÇÃO: CATÁLOGO DE CURSOS PROMOCIONAIS
+        ========================================================
+        Exibe 3 cards de cursos em grid responsivo (1/2/3 colunas).
+        Cada card tem: imagem, badge, título, descrição, info do curso
+        (carga horária + certificado), preço antigo (riscado), preço atual
+        e botão "Ver Desconto" que abre um modal (openPromoModal).
+        As imagens vêm do Unsplash com fallback (onerror) para placehold.co.
+    -->
     <section id="cursos" class="py-20 bg-aesthetic-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!--
+                Cabeçalho da seção com tabs (Cursos Livres / Pós-Graduação):
+                As tabs são apenas visuais (sem JS de troca neste versão).
+            -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-widest text-aesthetic-gold">Cursos Individuais</span>
@@ -374,6 +563,11 @@
                 </div>
             </div>
 
+            <!--
+                Grid de cards de cursos:
+                - 1 coluna em mobile, 2 em tablets, 3 em desktops
+                - group: permite efeitos de hover no card inteiro
+            -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Course Card 1 -->
                 <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-stone-100 flex flex-col justify-between group">
@@ -471,7 +665,17 @@
         </div>
     </section>
 
-    <!-- Section: Partner Coupons Portal -->
+    <!--
+        ========================================================
+        SEÇÃO: CUPONS DE PARCEIROS
+        ========================================================
+        Exibe 3 cards de cupons de desconto de lojas parceiras.
+        Cada card tem: badge de desconto, nome do parceiro, descrição,
+        código do cupom e botão "Copiar" (copyToClipboard) ou
+        link externo (ex: Shopee).
+        O código do cupom é copiado para a área de transferência
+        usando a função copyToClipboard() do JavaScript.
+    -->
     <section id="parceiros" class="py-20 bg-stone-50 border-t border-stone-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
@@ -553,7 +757,13 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!--
+        ========================================================
+        RODAPÉ (FOOTER)
+        ========================================================
+        Contém 4 colunas: logo + descrição (2 colunas), navegação,
+        e contato. Finaliza com copyright e mensagem de rodapé.
+    -->
     <footer class="bg-stone-950 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 border-b border-stone-800 pb-12">
@@ -597,7 +807,15 @@
         </div>
     </footer>
 
-    <!-- Global Toast Notification System -->
+    <!--
+        ========================================================
+        SISTEMA DE NOTIFICAÇÃO TOAST
+        ========================================================
+        Elemento fixo no canto inferior direito que aparece
+        temporariamente para feedback (ex: "Cupom copiado!").
+        Inicialmente oculto (translate-y-20 + opacity-0).
+        O JavaScript controla a visibilidade via classes CSS.
+    -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
         <div class="bg-stone-900 border border-stone-800 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3">
             <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
@@ -610,7 +828,15 @@
         </div>
     </div>
 
-    <!-- Promo Action Modal -->
+    <!--
+        ========================================================
+        MODAL DE PROMOÇÃO (OVERLAY)
+        ========================================================
+        Janela modal que sobrepõe a página ao clicar "Ver Desconto".
+        Inicialmente oculto (hidden). O JS remove/adiciona a classe
+        "hidden" para exibir/ocultar. Também desativa o scroll do body.
+        Conteúdo dinâmico: nome e preço do curso são injetados via JS.
+    -->
     <div id="promo-modal" class="fixed inset-0 z-50 hidden bg-stone-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl border border-stone-100 relative">
             <button onclick="closePromoModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-900 text-lg transition-all">
@@ -641,12 +867,35 @@
         </div>
     </div>
 
-    <!-- Script Interações -->
+    <!--
+        ========================================================
+        JAVASCRIPT — INTERAÇÕES DA PÁGINA
+        ========================================================
+        Todo o JavaScript está embutido no final do <body> para
+        garantir que o DOM (HTML) já foi carregado antes de executar.
+        Funções principais:
+        1. copyToClipboard() — copia texto para a área de transferência
+        2. showToast() — exibe notificação toast temporária
+        3. spinWheel() — controla a roleta de prêmios
+        4. calculateSavings() — calcula economia do simulador
+        5. openPromoModal() / closePromoModal() — controla o modal
+        6. window.onload — executa cálculo inicial ao carregar
+    -->
     <script>
-        let isSpinning = false;
-        let toastTimeout;
+        // Variáveis globais de estado
+        let isSpinning = false; // Evita múltiplos giros simultâneos
+        let toastTimeout;       // Referência do timeout do toast (para limpar se necessário)
 
-        // Custom Clipboard Copy (com robustez para iFrame)
+        /*
+            Função: copyToClipboard(text)
+            --------------------------------------------
+            Copia um texto para a área de transferência do navegador.
+            Usa document.execCommand('copy') em vez da API moderna
+            navigator.clipboard para garantir compatibilidade com
+            iframes e navegadores antigos.
+            Cria um <textarea> temporário, seleciona, copia e remove.
+            Exibe um toast de sucesso ou erro ao final.
+        */
         function copyToClipboard(text) {
             try {
                 const tempTextArea = document.createElement("textarea");
@@ -665,7 +914,16 @@
             }
         }
 
-        // Sistema Global de Toast Notifications
+        /*
+            Função: showToast(title, message)
+            --------------------------------------------
+            Exibe a notificação toast no canto inferior direito.
+            - Atualiza o título e a mensagem dinamicamente
+            - Remove as classes que escondem o toast (translate-y-20, opacity-0)
+            - Adiciona classes que o tornam visível (translate-y-0, opacity-100)
+            - Após 4 segundos, oculta novamente (setTimeout)
+            - clearTimeout evita sobreposição de múltiplos toasts
+        */
         function showToast(title, message) {
             const toast = document.getElementById("toast");
             const toastTitle = document.getElementById("toast-title");
@@ -688,7 +946,21 @@
             }, 4000);
         }
 
-        // Controle da Roda da Sorte
+        /*
+            Função: spinWheel()
+            --------------------------------------------
+            Controla toda a lógica da roleta de prêmios:
+            1. Verifica se já não está girando (isSpinning)
+            2. Desativa o botão durante a animação
+            3. Sorteia um prêmio aleatório (Math.random)
+            4. Calcula o ângulo de rotação para alinhar o setor
+               sorteado com o indicador (seta no topo)
+            5. Adiciona 5 voltas completas (1800°) para efeito visual
+            6. Aplica a rotação via CSS transform no SVG
+            7. Após 4 segundos (fim da transição CSS), atualiza o
+               bloco de recompensa com o prêmio sorteado
+            8. Exibe um toast de parabéns
+        */
         function spinWheel() {
             if (isSpinning) return;
 
@@ -772,7 +1044,18 @@
             }, 4000);
         }
 
-        // Calculadora Dinâmica do Simulador de Economia
+        /*
+            Função: calculateSavings()
+            --------------------------------------------
+            Calcula a economia ao escolher a assinatura Infinity
+            em vez de comprar cursos avulsos individualmente.
+            1. Seleciona todos os checkboxes de cursos
+            2. Soma os preços (data-price) dos cursos marcados
+            3. Compara com o preço fixo da assinatura (R$ 1.044)
+            4. Atualiza o DOM com os valores formatados em R$
+            5. Se a economia for positiva, mostra em verde
+            6. Se for negativa/zero, mostra mensagem alternativa
+        */
         function calculateSavings() {
             const checkboxes = document.querySelectorAll(".course-calc-checkbox");
             const totalSingleEl = document.getElementById("calc-total-single");
@@ -804,7 +1087,14 @@
             }
         }
 
-        // Funções de Controle das Telas Modais de Vendas
+        /*
+            Função: openPromoModal(courseName, price)
+            --------------------------------------------
+            Abre o modal de promoção injetando dinamicamente
+            o nome do curso e o preço promocional.
+            Remove a classe "hidden" para exibir o modal e
+            desativa o scroll da página (overflow: hidden).
+        */
         function openPromoModal(courseName, price) {
             const modal = document.getElementById("promo-modal");
             const modalCourseName = document.getElementById("modal-course-name");
@@ -817,13 +1107,26 @@
             document.body.style.overflow = "hidden"; // Desativa scroll do fundo
         }
 
+        /*
+            Função: closePromoModal()
+            --------------------------------------------
+            Fecha o modal de promoção adicionando a classe "hidden"
+            e reativando o scroll da página (overflow: "").
+        */
         function closePromoModal() {
             const modal = document.getElementById("promo-modal");
             modal.classList.add("hidden");
             document.body.style.overflow = ""; // Reativa o scroll do fundo
         }
 
-        // Calcula a economia inicial no carregamento da página
+        /*
+            Evento: window.onload
+            --------------------------------------------
+            Executado automaticamente quando a página termina
+            de carregar. Chama calculateSavings() para exibir
+            os valores iniciais do simulador com os cursos
+            que já vêm marcados por padrão (itens 1 e 2).
+        */
         window.onload = function() {
             calculateSavings();
         };
