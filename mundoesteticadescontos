@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo da Estética — Portal de Descontos & Benefícios</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        aesthetic: {
+                            50: '#FDF8F5',
+                            100: '#FBEFEA',
+                            200: '#F7DEC3',
+                            300: '#E9C49A',
+                            400: '#D49B6A',
+                            500: '#C17B4B',
+                            600: '#A75D35',
+                            700: '#8A4526',
+                            gold: '#C5A880',
+                            goldDark: '#A38558',
+                            dark: '#1C1917',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDF8F5;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #DFBA8C 0%, #C5A880 50%, #A8895F 100%);
+        }
+        .dark-gold-gradient {
+            background: linear-gradient(135deg, #1C1917 0%, #2A2521 100%);
+        }
+        /* Roda da Fortuna */
+        #wheel-container {
+            perspective: 1000px;
+        }
+        #wheel {
+            transition: transform 4s cubic-bezier(0.1, 0.8, 0.1, 1);
+            transform-origin: center center;
+        }
+    </style>
+</head>
+<body class="text-stone-800 antialiased selection:bg-aesthetic-200 selection:text-stone-950">
+
+    <!-- Nav Bar -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-white shadow-md">
+                        <i class="fa-solid fa-wand-magic-sparkles text-lg animate-pulse"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-wider text-stone-900 block leading-none">MUNDO ESTÉTICA</span>
+                        <span class="text-xs font-semibold uppercase tracking-widest text-aesthetic-gold">Clube de Benefícios</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#roleta" class="text-stone-600 hover:text-aesthetic-700 font-medium transition-colors">Roda da Sorte</a>
+                    <a href="#calculadora" class="text-stone-600 hover:text-aesthetic-700 font-medium transition-colors">Simulador Infinity</a>
+                    <a href="#cursos" class="text-stone-600 hover:text-aesthetic-700 font-medium transition-colors">Cursos Oficiais</a>
+                    <a href="#parceiros" class="text-stone-600 hover:text-aesthetic-700 font-medium transition-colors">Cupons Parceiros</a>
+                </div>
+                <div>
+                    <a href="#roleta" class="gold-gradient text-stone-950 font-bold px-5 py-2.5 rounded-full hover:shadow-lg transition-all text-sm flex items-center gap-2 border border-amber-200/20">
+                        <i class="fa-solid fa-gift"></i> Girar Roleta
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden bg-gradient-to-b from-aesthetic-100 via-aesthetic-50 to-white py-16 sm:py-24">
+        <div class="absolute inset-0 z-0 opacity-40">
+            <div class="absolute top-12 left-12 w-64 h-64 rounded-full bg-aesthetic-200 filter blur-3xl animate-bounce" style="animation-duration: 10s;"></div>
+            <div class="absolute bottom-12 right-12 w-80 h-80 rounded-full bg-aesthetic-300 filter blur-3xl animate-pulse" style="animation-duration: 8s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-amber-100/60 border border-amber-200 text-amber-950 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+                        <i class="fa-solid fa-tags text-amber-700"></i> Descontos Exclusivos Verificados de 2026
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-stone-900 tracking-tight leading-none">
+                        Sua carreira na Estética pelo <span class="text-transparent bg-clip-text gold-gradient">menor preço.</span>
+                    </h1>
+                    <p class="text-lg text-stone-600 max-w-2xl mx-auto lg:mx-0">
+                        Inscreva-se nos melhores cursos do <strong>Mundo Estética</strong> com descontos imperdíveis ou garanta cupons especiais para comprar os melhores cosméticos profissionais.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#roleta" class="dark-gold-gradient text-white font-semibold px-8 py-4 rounded-xl hover:shadow-xl transition-all flex items-center justify-center gap-3 group text-center">
+                            <i class="fa-solid fa-circle-play text-aesthetic-gold group-hover:scale-110 transition-transform"></i>
+                            Girar Roda da Sorte
+                        </a>
+                        <a href="#cursos" class="bg-white border-2 border-stone-200 text-stone-800 font-semibold px-8 py-4 rounded-xl hover:border-aesthetic-gold transition-all text-center flex items-center justify-center gap-2">
+                            Ver Cursos Promocionais
+                        </a>
+                    </div>
+                    
+                    <!-- Stats / Mini Banner -->
+                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-stone-200 max-w-md mx-auto lg:mx-0">
+                        <div>
+                            <span class="block text-3xl font-extrabold text-stone-900">Até 60%</span>
+                            <span class="text-xs text-stone-500 font-medium">De Economia Real</span>
+                        </div>
+                        <div class="border-x border-stone-200 px-4">
+                            <span class="block text-3xl font-extrabold text-stone-900">12x R$87</span>
+                            <span class="text-xs text-stone-500 font-medium">Assinatura Infinity</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-extrabold text-stone-900">100%</span>
+                            <span class="text-xs text-stone-500 font-medium">Garantia 7 Dias</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Promo Banner Graphics -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative bg-white p-8 rounded-3xl shadow-xl border border-stone-100 max-w-sm mx-auto">
+                        <div class="absolute -top-4 -right-4 bg-red-500 text-white font-bold text-xs uppercase px-3 py-1.5 rounded-full shadow-md animate-bounce">
+                            Super Oferta!
+                        </div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="bg-aesthetic-100 text-aesthetic-700 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">Mundo Estética</span>
+                            <span class="text-emerald-600 font-semibold text-xs flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-ping"></span> Ativo</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-900 mb-2">Assinatura Infinity</h3>
+                        <p class="text-sm text-stone-500 mb-6">Acesso ilimitado a mais de 30 cursos profissionais de estética, pós-graduação e mentorias com Jéssica Carbonelli.</p>
+                        
+                        <div class="bg-stone-50 p-4 rounded-xl mb-6">
+                            <div class="text-xs text-stone-400 line-through">De R$ 1.997,00/ano</div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-sm font-bold text-stone-900">Por</span>
+                                <span class="text-4xl font-black text-aesthetic-700">12x R$ 87</span>
+                                <span class="text-xs text-stone-500">/mês</span>
+                            </div>
+                            <div class="text-xs text-emerald-600 font-medium mt-1"><i class="fa-solid fa-piggy-bank"></i> Economize mais de R$ 900,00!</div>
+                        </div>
+
+                        <a href="https://mundoestetica.com.br" target="_blank" class="w-full text-center block bg-stone-900 hover:bg-stone-800 text-white font-bold py-3.5 rounded-xl transition-colors shadow-md text-sm">
+                            Garantir Vaga com Desconto <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                        <p class="text-center text-[11px] text-stone-400 mt-3"><i class="fa-solid fa-shield-halved"></i> 7 dias de garantia incondicional de reembolso.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section: Lucky Wheel (Roleta de Prêmios) -->
+    <section id="roleta" class="py-20 bg-stone-900 text-white overflow-hidden relative">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white rounded-full"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-dashed border-white rounded-full"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-aesthetic-gold">Teste sua Sorte</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2">Roda da Sorte: Cupons Exclusivos!</h2>
+                <p class="text-stone-400 mt-3">Gire a roleta e ganhe um cupom de desconto real garantido para sua próxima formação ou compra no Mundo da Estética.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Interactive Canvas/SVG Wheel -->
+                <div class="lg:col-span-6 flex flex-col items-center justify-center">
+                    <div id="wheel-container" class="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px]">
+                        <!-- Arrow indicator -->
+                        <div class="absolute -top-2 left-1/2 -translate-x-1/2 z-30 drop-shadow-lg">
+                            <i class="fa-solid fa-caret-down text-amber-500 text-5xl"></i>
+                        </div>
+                        
+                        <!-- The Wheel -->
+                        <svg id="wheel" class="w-full h-full shadow-2xl rounded-full border-4 border-amber-500/50" viewBox="0 0 100 100">
+                            <!-- Outer Ring -->
+                            <circle cx="50" cy="50" r="48" fill="#2d2521" stroke="#C5A880" stroke-width="2"/>
+                            
+                            <!-- Segment 1: 15% OFF Infinity -->
+                            <path d="M50,50 L50,2 A48,48 0 0,1 91.5,74 Z" fill="#1C1917" />
+                            <!-- Segment 2: E-Book Free -->
+                            <path d="M50,50 L91.5,74 A48,48 0 0,1 50,98 Z" fill="#C5A880" />
+                            <!-- Segment 3: 10% OFF Avulsos -->
+                            <path d="M50,50 L50,98 A48,48 0 0,1 8.5,74 Z" fill="#1C1917" />
+                            <!-- Segment 4: Mentoria VIP -->
+                            <path d="M50,50 L8.5,74 A48,48 0 0,1 8.5,26 Z" fill="#2D2521" />
+                            <!-- Segment 5: 20% OFF Geral -->
+                            <path d="M50,50 L8.5,26 A48,48 0 0,1 50,2 Z" fill="#C5A880" />
+
+                            <!-- Segment Texts -->
+                            <g transform="translate(50,50)" fill="#ffffff" font-size="3.5" font-weight="bold" text-anchor="middle">
+                                <text transform="rotate(36, 0, 0) translate(0, -32) rotate(180)" fill="#C5A880">15% INFINITY</text>
+                                <text transform="rotate(108, 0, 0) translate(0, -32) rotate(180)" fill="#1C1917">E-BOOK GRÁTIS</text>
+                                <text transform="rotate(180, 0, 0) translate(0, -32) rotate(180)" fill="#C5A880">10% CURSOS</text>
+                                <text transform="rotate(252, 0, 0) translate(0, -32) rotate(180)" fill="#ffffff">MENTORIA VIP</text>
+                                <text transform="rotate(324, 0, 0) translate(0, -32) rotate(180)" fill="#1C1917">20% PREMIUM</text>
+                            </g>
+
+                            <!-- Center Pin -->
+                            <circle cx="50" cy="50" r="10" fill="#1C1917" stroke="#C5A880" stroke-width="2" />
+                            <circle cx="50" cy="50" r="5" fill="#C5A880" />
+                        </svg>
+                    </div>
+                    
+                    <button id="spin-button" onclick="spinWheel()" class="mt-8 px-10 py-4 dark-gold-gradient hover:brightness-110 text-white font-extrabold text-lg rounded-full shadow-lg hover:shadow-amber-500/20 transition-all border border-amber-300 flex items-center gap-3">
+                        <i class="fa-solid fa-spinner animate-spin-slow"></i> GIRAR ROLETAR
+                    </button>
+                    <p class="text-xs text-stone-400 mt-3">Limite de 1 giro gratuito por visitante diário.</p>
+                </div>
+
+                <!-- Reward display area -->
+                <div class="lg:col-span-6 flex flex-col justify-center">
+                    <div id="reward-box" class="bg-stone-800/80 border border-stone-700/80 p-8 rounded-3xl text-center lg:text-left transition-all max-w-md mx-auto lg:mx-0">
+                        <div class="inline-flex w-14 h-14 items-center justify-center rounded-2xl bg-stone-700 text-aesthetic-gold text-2xl mb-6">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Qual será o seu prêmio?</h3>
+                        <p class="text-stone-400 text-sm mb-6">Clique no botão "GIRAR ROLETAR" para sortear instantaneamente um dos super cupons para os cursos do Mundo da Estética.</p>
+                        
+                        <div class="border-t border-stone-700 pt-6 space-y-3">
+                            <div class="flex items-center gap-3 text-xs text-stone-300">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Descontos garantidos e testados
+                            </div>
+                            <div class="flex items-center gap-3 text-xs text-stone-300">
+                                <i class="fa-solid fa-check text-emerald-500"></i> Válido para matrículas em Junho/2026
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Smart Savings Calculator -->
+    <section id="calculadora" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-aesthetic-gold">Economia Inteligente</span>
+                <h2 class="text-3xl font-extrabold text-stone-900 mt-2">Simulador de Economia Infinity</h2>
+                <p class="text-stone-500 mt-2">Selecione abaixo os cursos individuais que você deseja realizar e compare com a assinatura unificada Infinity.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Course selector list -->
+                <div class="lg:col-span-7 bg-aesthetic-50 p-6 sm:p-8 rounded-3xl border border-aesthetic-100">
+                    <h3 class="text-lg font-bold text-stone-900 mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-check-double text-aesthetic-600"></i> Escolha seus Cursos de Interesse:
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <!-- Course Item 1 -->
+                        <label class="flex items-center justify-between p-4 bg-white hover:bg-stone-50 rounded-xl border border-stone-200 cursor-pointer transition-all">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" checked onchange="calculateSavings()" data-price="497" class="course-calc-checkbox w-5 h-5 rounded border-stone-300 text-aesthetic-600 focus:ring-aesthetic-gold">
+                                <div>
+                                    <span class="font-bold text-stone-900 text-sm sm:text-base block">Limpeza de Pele Profissional e Peeling</span>
+                                    <span class="text-xs text-stone-500">Curso prático para iniciantes e avançado</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-black text-stone-800 text-sm sm:text-base">R$ 497</span>
+                            </div>
+                        </label>
+
+                        <!-- Course Item 2 -->
+                        <label class="flex items-center justify-between p-4 bg-white hover:bg-stone-50 rounded-xl border border-stone-200 cursor-pointer transition-all">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" checked onchange="calculateSavings()" data-price="697" class="course-calc-checkbox w-5 h-5 rounded border-stone-300 text-aesthetic-600 focus:ring-aesthetic-gold">
+                                <div>
+                                    <span class="font-bold text-stone-900 text-sm sm:text-base block">Microagulhamento Clínico Avançado</span>
+                                    <span class="text-xs text-stone-500">Indução de colágeno, cicatrizes e melasma</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-black text-stone-800 text-sm sm:text-base">R$ 697</span>
+                            </div>
+                        </label>
+
+                        <!-- Course Item 3 -->
+                        <label class="flex items-center justify-between p-4 bg-white hover:bg-stone-50 rounded-xl border border-stone-200 cursor-pointer transition-all">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" onchange="calculateSavings()" data-price="897" class="course-calc-checkbox w-5 h-5 rounded border-stone-300 text-aesthetic-600 focus:ring-aesthetic-gold">
+                                <div>
+                                    <span class="font-bold text-stone-900 text-sm sm:text-base block">Drenagem Linfática Corporal e Facial</span>
+                                    <span class="text-xs text-stone-500">Técnicas manuais e pós-operatório cirúrgico</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-black text-stone-800 text-sm sm:text-base">R$ 897</span>
+                            </div>
+                        </label>
+
+                        <!-- Course Item 4 -->
+                        <label class="flex items-center justify-between p-4 bg-white hover:bg-stone-50 rounded-xl border border-stone-200 cursor-pointer transition-all">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" onchange="calculateSavings()" data-price="1497" class="course-calc-checkbox w-5 h-5 rounded border-stone-300 text-aesthetic-600 focus:ring-aesthetic-gold">
+                                <div>
+                                    <span class="font-bold text-stone-900 text-sm sm:text-base block">Toxina Botulínica e Preenchimento</span>
+                                    <span class="text-xs text-stone-500">Mapeamento, diluição e aplicação segura</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-black text-stone-800 text-sm sm:text-base">R$ 1.497</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Savings comparison graphic -->
+                <div class="lg:col-span-5 bg-stone-900 text-white p-8 rounded-3xl flex flex-col justify-between shadow-xl">
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-aesthetic-gold"><i class="fa-solid fa-chart-line"></i> Relatório de Economia</h3>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between text-stone-400 text-sm pb-2 border-b border-stone-800">
+                                <span>Total em cursos avulsos:</span>
+                                <span id="calc-total-single" class="font-bold text-white text-base">R$ 1.194</span>
+                            </div>
+                            <div class="flex justify-between text-stone-400 text-sm pb-2 border-b border-stone-800">
+                                <span>Custo da Assinatura Infinity:</span>
+                                <span class="font-bold text-emerald-400 text-base">R$ 1.044 à vista</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-stone-800/80 p-6 rounded-2xl mb-6 border border-stone-700">
+                            <span class="text-xs uppercase text-stone-400 font-bold tracking-wider">Sua Economia Estimada:</span>
+                            <div id="calc-savings-result" class="text-3xl font-black text-emerald-400 mt-1">R$ 150,00</div>
+                            <p class="text-[11px] text-stone-400 mt-2">Além dos cursos selecionados, você ganha acesso a mais 25 cursos adicionais de estética sem pagar nada a mais!</p>
+                        </div>
+                    </div>
+
+                    <a href="https://mundoestetica.com.br" target="_blank" class="w-full text-center gold-gradient text-stone-950 font-extrabold py-4 rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2">
+                        Quero Matrícula com Desconto <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Catalog of Promoted Courses -->
+    <section id="cursos" class="py-20 bg-aesthetic-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-aesthetic-gold">Cursos Individuais</span>
+                    <h2 class="text-3xl font-extrabold text-stone-900 mt-2">Nossas Formações Oficiais</h2>
+                    <p class="text-stone-500 mt-1">Inscreva-se com certificado válido nacionalmente.</p>
+                </div>
+                <div class="mt-4 md:mt-0 bg-white border border-stone-200 p-1 rounded-xl inline-flex">
+                    <button class="bg-aesthetic-gold text-white font-semibold text-xs px-4 py-2 rounded-lg">Cursos Livres</button>
+                    <button class="text-stone-600 hover:text-stone-900 font-semibold text-xs px-4 py-2 rounded-lg">Pós-Graduação</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course Card 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-stone-100 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-48 bg-stone-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=600&auto=format&fit=crop" onerror="this.src='https://placehold.co/600x480/E9C49A/fff?text=Limpeza+de+Pele'" alt="Limpeza de pele" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-emerald-500 text-white font-extrabold text-xs uppercase px-2.5 py-1 rounded shadow-md">Campeão de Vendas</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-2 items-center text-xs text-aesthetic-gold font-bold uppercase tracking-wider mb-2">
+                                <i class="fa-solid fa-graduation-cap"></i> Curso Livre
+                            </div>
+                            <h3 class="text-lg font-bold text-stone-900 mb-2">Curso Completo de Limpeza de Pele</h3>
+                            <p class="text-stone-500 text-xs mb-4">Aprenda da higienização facial extração ultrassônica até alta frequência de forma prática e descomplicada.</p>
+                            
+                            <div class="flex gap-4 border-t border-stone-100 pt-4">
+                                <div class="text-xs text-stone-400"><i class="fa-solid fa-clock"></i> 40h de conteúdo</div>
+                                <div class="text-xs text-stone-400"><i class="fa-solid fa-file-pdf"></i> Certificado Incluso</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-stone-50 border-t border-stone-100 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[11px] text-stone-400 line-through">De R$ 497,00</span>
+                            <span class="text-xl font-extrabold text-stone-900">R$ 297,00</span>
+                        </div>
+                        <button onclick="openPromoModal('Limpeza de Pele Profissional', '297,00')" class="bg-stone-900 hover:bg-stone-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors">
+                            Ver Desconto
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-stone-100 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-48 bg-stone-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1614859324967-bdf461fcf769?q=80&w=600&auto=format&fit=crop" onerror="this.src='https://placehold.co/600x480/E9C49A/fff?text=Microagulhamento'" alt="Microagulhamento" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-amber-500 text-white font-extrabold text-xs uppercase px-2.5 py-1 rounded shadow-md">Super Desconto</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-2 items-center text-xs text-aesthetic-gold font-bold uppercase tracking-wider mb-2">
+                                <i class="fa-solid fa-graduation-cap"></i> Especialização
+                            </div>
+                            <h3 class="text-lg font-bold text-stone-900 mb-2">Microagulhamento e Dermaroller</h3>
+                            <p class="text-stone-500 text-xs mb-4">Trate estrias, marcas de acne, melasmas e rejuvenescimento utilizando roller e canetas elétricas.</p>
+                            
+                            <div class="flex gap-4 border-t border-stone-100 pt-4">
+                                <div class="text-xs text-stone-400"><i class="fa-solid fa-clock"></i> 32h de conteúdo</div>
+                                <div class="text-xs text-stone-400"><i class="fa-solid fa-file-pdf"></i> Certificado Incluso</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-stone-50 border-t border-stone-100 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[11px] text-stone-400 line-through">De R$ 697,00</span>
+                            <span class="text-xl font-extrabold text-stone-900">R$ 397,00</span>
+                        </div>
+                        <button onclick="openPromoModal('Microagulhamento Clínico', '397,00')" class="bg-stone-900 hover:bg-stone-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors">
+                            Ver Desconto
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-stone-100 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-48 bg-stone-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=600&auto=format&fit=crop" onerror="this.src='https://placehold.co/600x480/E9C49A/fff?text=Peeling'" alt="Peelings Estéticos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-purple-500 text-white font-extrabold text-xs uppercase px-2.5 py-1 rounded shadow-md">Novidade</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex gap-2 items-center text-xs text-aesthetic-gold font-bold uppercase tracking-wider mb-2">
+                                <i class="fa-solid fa-graduation-cap"></i> Avançado
+                            </div>
+                            <h3 class="text-lg font-bold text-stone-900 mb-2">Peelings Químicos, Físicos e Enzimáticos</h3>
+                            <p class="text-stone-500 text-xs mb-4">Aprenda a realizar aplicações de peeling de ácido glicólico, salicílico, retinóico e microdermoabrasão.</p>
+                            
+                            <div class="flex gap-4 border-t border-stone-100 pt-4">
+                                <div class="text-xs text-stone-400"><i class="fa-solid fa-clock"></i> 50h de conteúdo</div>
+                                <div class="text-xs text-stone-400"><i class="fa-solid fa-file-pdf"></i> Certificado Incluso</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-stone-50 border-t border-stone-100 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[11px] text-stone-400 line-through">De R$ 597,00</span>
+                            <span class="text-xl font-extrabold text-stone-900">R$ 297,00</span>
+                        </div>
+                        <button onclick="openPromoModal('Peelings Químicos e Físicos', '297,00')" class="bg-stone-900 hover:bg-stone-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors">
+                            Ver Desconto
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Partner Coupons Portal -->
+    <section id="parceiros" class="py-20 bg-stone-50 border-t border-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-aesthetic-gold">Parceiros e Lojas Físicas</span>
+                <h2 class="text-3xl font-extrabold text-stone-900 mt-2">Cupons de Desconto Parceiros</h2>
+                <p class="text-stone-500 mt-2">Adquira os seus cosméticos, agulhas, dermarollers e descartáveis para o consultório com cupons ativos garantidos!</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Partner Coupon 1: Mundo do Cabeleireiro -->
+                <div class="bg-white rounded-3xl p-6 shadow-md border border-stone-200 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute -top-3 -right-3 w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center text-pink-500 font-extrabold text-xs">
+                        10%
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="bg-pink-100 text-pink-700 text-[10px] font-bold uppercase px-2 py-0.5 rounded">Mundo do Cabeleireiro</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-1">Mundo do Cabeleireiro</h3>
+                        <p class="text-stone-500 text-xs mb-6">Válido em todo o site oficial para a primeira compra em maquiagens, produtos capilares e de estética.</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-xl border border-dashed border-stone-200 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-stone-400 font-bold uppercase tracking-wide">Código</span>
+                            <span class="font-mono font-black text-stone-800 tracking-wider">BEMVINDO10</span>
+                        </div>
+                        <button onclick="copyToClipboard('BEMVINDO10')" class="bg-stone-900 hover:bg-stone-800 text-white hover:text-white px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-regular fa-copy"></i> Copiar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Partner Coupon 2: Shopee O Mundo da Estética -->
+                <div class="bg-white rounded-3xl p-6 shadow-md border border-stone-200 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute -top-3 -right-3 w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 font-extrabold text-xs">
+                        Seguidor
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="bg-amber-100 text-amber-700 text-[10px] font-bold uppercase px-2 py-0.5 rounded">Shopee Oficial</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-1">O Mundo da Estética</h3>
+                        <p class="text-stone-500 text-xs mb-6">Garante cupons exclusivos de seguidor da loja oficial na Shopee + Frete Grátis na plataforma acima de R$19.</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-xl border border-dashed border-stone-200 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-stone-400 font-bold uppercase tracking-wide">Shopee</span>
+                            <span class="font-mono font-black text-stone-800 tracking-wider">CUPOM SEGUIDOR</span>
+                        </div>
+                        <a href="https://shopee.com.br" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-stone-950 px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+                            Ir p/ Loja <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Partner Coupon 3: Outros Cosméticos -->
+                <div class="bg-white rounded-3xl p-6 shadow-md border border-stone-200 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute -top-3 -right-3 w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center text-stone-500 font-extrabold text-xs">
+                        5%
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="bg-stone-100 text-stone-700 text-[10px] font-bold uppercase px-2 py-0.5 rounded">Todo o carrinho</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-1">Mundo do Cabeleireiro (Geral)</h3>
+                        <p class="text-stone-500 text-xs mb-6">Desconto de 5% cumulativo para compras gerais de marcas como Lola, Haskell, Wella e muito mais.</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-xl border border-dashed border-stone-200 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] text-stone-400 font-bold uppercase tracking-wide">Código</span>
+                            <span class="font-mono font-black text-stone-800 tracking-wider">DO5</span>
+                        </div>
+                        <button onclick="copyToClipboard('DO5')" class="bg-stone-900 hover:bg-stone-800 text-white hover:text-white px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-regular fa-copy"></i> Copiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 border-b border-stone-800 pb-12">
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-stone-950 shadow-md">
+                            <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-xl font-bold tracking-wider text-white block leading-none">MUNDO ESTÉTICA</span>
+                            <span class="text-xs font-semibold uppercase tracking-widest text-aesthetic-gold">Clube de Benefícios</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-stone-400 max-w-sm">
+                        O melhor lugar para garantir descontos, cupons ativos e vantagens especiais para os cursos oficiais do Mundo Estética e de marcas parceiras.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-aesthetic-gold mb-4">Navegação</h4>
+                    <ul class="space-y-2 text-sm text-stone-400">
+                        <li><a href="#roleta" class="hover:text-white transition-colors">Roda da Sorte</a></li>
+                        <li><a href="#calculadora" class="hover:text-white transition-colors">Simulador de Descontos</a></li>
+                        <li><a href="#cursos" class="hover:text-white transition-colors">Cursos Oficiais</a></li>
+                        <li><a href="#parceiros" class="hover:text-white transition-colors">Parceiros Físicos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-aesthetic-gold mb-4">Suporte & Contato</h4>
+                    <ul class="space-y-2 text-sm text-stone-400">
+                        <li><a href="https://mundoestetica.com.br" target="_blank" class="hover:text-white transition-colors">Site Oficial</a></li>
+                        <li><span class="text-stone-500">contato@mundoestetica.com.br</span></li>
+                        <li><span class="text-stone-500">WhatsApp Oficial no portal</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-500 text-center">
+                <p>&copy; 2026 Mundo Estética Clube de Benefícios. Todos os direitos reservados.</p>
+                <p>Desenvolvido com carinho para esteticistas de sucesso.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Toast Notification System -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-stone-900 border border-stone-800 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+                <span id="toast-title" class="font-bold text-sm block">Sucesso!</span>
+                <span id="toast-message" class="text-xs text-stone-400">Cupom copiado com sucesso.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promo Action Modal -->
+    <div id="promo-modal" class="fixed inset-0 z-50 hidden bg-stone-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl border border-stone-100 relative">
+            <button onclick="closePromoModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-900 text-lg transition-all">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center">
+                <div class="w-16 h-16 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mx-auto mb-4">
+                    <i class="fa-solid fa-graduation-cap animate-bounce"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-stone-900 mb-2">Desconto Ativado!</h3>
+                <p class="text-stone-500 text-sm mb-6">Você ativou o preço promocional para o curso de <strong id="modal-course-name">Curso</strong>.</p>
+                
+                <div class="bg-aesthetic-50 p-6 rounded-2xl mb-6">
+                    <div class="text-xs text-stone-400 line-through">Preço Padrão: R$ 597,00</div>
+                    <div class="text-3xl font-black text-stone-900 mt-1">R$ <span id="modal-course-price">297,00</span></div>
+                    <div class="text-xs text-emerald-600 font-semibold mt-1">Válido somente para matrículas nas próximas 24 horas</div>
+                </div>
+
+                <div class="space-y-3">
+                    <a href="https://mundoestetica.com.br" target="_blank" class="w-full text-center block dark-gold-gradient text-white font-bold py-3.5 rounded-xl hover:shadow-lg transition-all text-sm">
+                        Ir para Matrícula Oficial
+                    </a>
+                    <button onclick="closePromoModal()" class="w-full text-center block bg-stone-100 hover:bg-stone-200 text-stone-800 font-semibold py-3 rounded-xl text-xs transition-all">
+                        Voltar ao Portal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Interações -->
+    <script>
+        let isSpinning = false;
+        let toastTimeout;
+
+        // Custom Clipboard Copy (com robustez para iFrame)
+        function copyToClipboard(text) {
+            try {
+                const tempTextArea = document.createElement("textarea");
+                tempTextArea.value = text;
+                tempTextArea.style.position = "absolute";
+                tempTextArea.style.left = "-9999px";
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempTextArea);
+                
+                showToast("Cupom Copiado!", `Use o código "${text}" no fechamento da compra.`);
+            } catch (err) {
+                console.error("Falha ao copiar:", err);
+                showToast("Erro ao copiar", "Não foi possível copiar automaticamente. Selecione e copie o texto manualmente.");
+            }
+        }
+
+        // Sistema Global de Toast Notifications
+        function showToast(title, message) {
+            const toast = document.getElementById("toast");
+            const toastTitle = document.getElementById("toast-title");
+            const toastMessage = document.getElementById("toast-message");
+
+            toastTitle.innerText = title;
+            toastMessage.innerText = message;
+
+            // Limpa timeout ativo anterior se houver
+            clearTimeout(toastTimeout);
+
+            // Exibe o Toast com transição suave
+            toast.classList.remove("translate-y-20", "opacity-0", "pointer-events-none");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            // Oculta após 4 segundos
+            toastTimeout = setTimeout(() => {
+                toast.classList.add("translate-y-20", "opacity-0", "pointer-events-none");
+                toast.classList.remove("translate-y-0", "opacity-100");
+            }, 4000);
+        }
+
+        // Controle da Roda da Sorte
+        function spinWheel() {
+            if (isSpinning) return;
+
+            isSpinning = true;
+            const wheel = document.getElementById("wheel");
+            const spinButton = document.getElementById("spin-button");
+            const rewardBox = document.getElementById("reward-box");
+
+            // Desativa botão temporariamente e atualiza ícone
+            spinButton.disabled = true;
+            spinButton.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> SORTEANDO...`;
+
+            // Prêmios mapeados pelos setores da roleta (360 graus / 5 setores = 72 graus cada)
+            // Ordem visual na roleta (sentido horário a partir do topo):
+            // 0° a 72°: 15% OFF Infinity
+            // 72° a 144°: 20% PREMIUM (Setor Premium de 20%)
+            // 144° a 216°: MENTORIA VIP
+            // 216° a 288°: 10% CURSOS
+            // 288° a 360°: E-BOOK GRÁTIS
+            const prizes = [
+                { name: "15% OFF na Assinatura Infinity", coupon: "INFINITY15", desc: "Economize ainda mais no seu plano anual ilimitado!" },
+                { name: "20% OFF Premium de Estética", coupon: "PREMIUM20", desc: "Desconto espetacular válido para qualquer curso VIP do catálogo!" },
+                { name: "Mentoria VIP Exclusiva com Mentora", coupon: "MENTORIAVIP", desc: "Sessão individual para acelerar o seu faturamento em estética!" },
+                { name: "10% de Desconto em Cursos Avulsos", coupon: "CURSOS10", desc: "Válido para compras de cursos livres selecionados." },
+                { name: "E-Book Oficial Grátis", coupon: "EBOOKGRATIS", desc: "Você ganhou o Guia Completo de Estética e Limpeza de Pele Profissional!" }
+            ];
+
+            // Escolhe um prêmio aleatório (0 a 4)
+            const prizeIndex = Math.floor(Math.random() * prizes.length);
+            
+            // Calcula graus de rotação: 
+            // Cada setor tem 72 graus de largura. Para centralizar o indicador no topo (270° trigonométrico ou topo do SVG):
+            // Nós definimos a rotação da roleta de modo que o setor escolhido termine no topo.
+            // Para garantir múltiplas rotações (visual estético), adicionamos entre 5 e 10 voltas completas (1800° a 3600°).
+            const degreesPerSector = 72;
+            const sectorCenterOffset = degreesPerSector / 2;
+            // Rotação alvo para alinhar o setor selecionado com o indicador de topo
+            const targetSectorAngle = 360 - (prizeIndex * degreesPerSector) - sectorCenterOffset;
+            const extraSpins = 5 * 360; // 5 voltas cheias
+            const finalRotation = extraSpins + targetSectorAngle;
+
+            // Executa animação no SVG da roleta
+            wheel.style.transform = `rotate(${finalRotation}deg)`;
+
+            // Espera a transição de CSS terminar (definida como 4 segundos na folha de estilos do cabeçalho)
+            setTimeout(() => {
+                const selectedPrize = prizes[prizeIndex];
+
+                // Atualiza visual do bloco de recompensa
+                rewardBox.innerHTML = `
+                    <div class="inline-flex w-14 h-14 items-center justify-center rounded-2xl bg-amber-500/20 text-aesthetic-gold text-2xl mb-6 animate-bounce">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 block mb-1">Prêmio Sorteado!</span>
+                    <h3 class="text-2xl font-bold mb-2 text-white">${selectedPrize.name}</h3>
+                    <p class="text-stone-400 text-sm mb-6">${selectedPrize.desc}</p>
+                    
+                    <div class="bg-stone-900 p-4 rounded-xl border border-dashed border-stone-700 flex items-center justify-between mb-6">
+                        <div class="text-left">
+                            <span class="block text-[10px] text-stone-500 font-bold uppercase tracking-wide">Código de Ativação</span>
+                            <span class="font-mono font-black text-amber-400 tracking-wider text-base">${selectedPrize.coupon}</span>
+                        </div>
+                        <button onclick="copyToClipboard('${selectedPrize.coupon}')" class="bg-white hover:bg-stone-100 text-stone-950 px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 shadow-md">
+                            <i class="fa-regular fa-copy"></i> Copiar
+                        </button>
+                    </div>
+
+                    <div class="border-t border-stone-700 pt-6">
+                        <a href="https://mundoestetica.com.br" target="_blank" class="w-full inline-flex items-center justify-center gap-2 text-center text-xs text-emerald-400 hover:text-emerald-300 font-bold uppercase tracking-wide transition-colors">
+                            Aproveitar Desconto no Site Oficial <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                `;
+
+                // Reseta estado do botão e notifica o usuário
+                spinButton.innerHTML = `<i class="fa-solid fa-circle-check"></i> GIRO UTILIZADO`;
+                spinButton.classList.remove("dark-gold-gradient");
+                spinButton.classList.add("bg-stone-800", "cursor-not-allowed", "text-stone-500", "border-stone-700");
+                
+                showToast("Parabéns!", `Você ganhou: ${selectedPrize.name}`);
+            }, 4000);
+        }
+
+        // Calculadora Dinâmica do Simulador de Economia
+        function calculateSavings() {
+            const checkboxes = document.querySelectorAll(".course-calc-checkbox");
+            const totalSingleEl = document.getElementById("calc-total-single");
+            const savingsResultEl = document.getElementById("calc-savings-result");
+
+            let totalSelectedPrice = 0;
+
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    totalSelectedPrice += parseFloat(checkbox.getAttribute("data-price"));
+                }
+            });
+
+            // O preço anual à vista da assinatura Infinity é R$ 1.044,00 (12x de R$ 87,00)
+            const infinityPrice = 1044;
+            const savings = totalSelectedPrice - infinityPrice;
+
+            // Atualiza o valor dos cursos individuais selecionados
+            totalSingleEl.innerText = `R$ ${totalSelectedPrice.toLocaleString('pt-BR', { minimumFractionDigits: 0 })}`;
+
+            // Atualiza o bloco de economia com formatação dinâmica
+            if (savings > 0) {
+                savingsResultEl.innerText = `R$ ${savings.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                savingsResultEl.className = "text-3xl font-black text-emerald-400 mt-1";
+            } else {
+                // Se for menor ou igual ao preço da assinatura, mostramos que a assinatura unificada ainda oferece mais vantagens gerais
+                savingsResultEl.innerText = "Assinatura Infinity vale mais!";
+                savingsResultEl.className = "text-xl font-bold text-amber-400 mt-1";
+            }
+        }
+
+        // Funções de Controle das Telas Modais de Vendas
+        function openPromoModal(courseName, price) {
+            const modal = document.getElementById("promo-modal");
+            const modalCourseName = document.getElementById("modal-course-name");
+            const modalCoursePrice = document.getElementById("modal-course-price");
+
+            modalCourseName.innerText = courseName;
+            modalCoursePrice.innerText = price;
+
+            modal.classList.remove("hidden");
+            document.body.style.overflow = "hidden"; // Desativa scroll do fundo
+        }
+
+        function closePromoModal() {
+            const modal = document.getElementById("promo-modal");
+            modal.classList.add("hidden");
+            document.body.style.overflow = ""; // Reativa o scroll do fundo
+        }
+
+        // Calcula a economia inicial no carregamento da página
+        window.onload = function() {
+            calculateSavings();
+        };
+    </script>
+</body>
+</html>
